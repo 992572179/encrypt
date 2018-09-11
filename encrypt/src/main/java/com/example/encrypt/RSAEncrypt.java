@@ -1,10 +1,4 @@
-package com.example.encrypt.rsa;
-/**
- * 
- * @author kawano
- * @date 2018年9月10日
- * @description
- */
+package com.example.encrypt;
 
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -16,23 +10,28 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
-import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 
 import org.apache.commons.codec.binary.Base64;
 
 import lombok.extern.log4j.Log4j;
 
+/**
+ * 
+ * @author kawano
+ * @date 2018年9月11日
+ * @description
+ */
 @Log4j
 public class RSAEncrypt {
 
 	private RSAEncrypt() {
-
+		// private constructor.
 	}
 
 	private static final String ALGORITHM = "RSA";
 
-	public static void applyRSA(String src) throws BadPaddingException, Exception {
+	public static void applyRSA(String src) throws Exception {
 		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(ALGORITHM);
 		keyPairGenerator.initialize(2048);
 		KeyPair keyPair = keyPairGenerator.genKeyPair();
@@ -41,7 +40,7 @@ public class RSAEncrypt {
 
 		Base64.encodeBase64(rsaPublicKey.getEncoded());
 		Base64.encodeBase64(rsaPrivateKey.getEncoded());
-		
+
 		// 私钥加密，公钥解密-->加密
 		PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(rsaPrivateKey.getEncoded());
 		KeyFactory factory = KeyFactory.getInstance(ALGORITHM);
@@ -52,8 +51,7 @@ public class RSAEncrypt {
 		if (log.isDebugEnabled()) {
 			log.info("-->rsa加密:" + Base64.encodeBase64String(result));
 		}
-		
-		
+
 		X509EncodedKeySpec spec2 = new X509EncodedKeySpec(rsaPublicKey.getEncoded());
 		factory = KeyFactory.getInstance(ALGORITHM);
 		PublicKey pk = factory.generatePublic(spec2);

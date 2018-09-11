@@ -7,10 +7,10 @@ import javax.crypto.BadPaddingException;
 
 import org.junit.Test;
 
+import com.example.encrypt.RSAEncrypt;
 import com.example.encrypt.hash.EncryptCodec;
-import com.example.encrypt.hash.HashEncrypt;
+import com.example.encrypt.hash.HashEncryptJdk;
 import com.example.encrypt.hash.HashEncryptBC;
-import com.example.encrypt.rsa.RSAEncrypt;
 
 public class CryptTest {
 
@@ -19,7 +19,7 @@ public class CryptTest {
 		String source = "blockchain";
 		String res = null;
 		try {
-			res = HashEncrypt.applySHA256(source);
+			res = HashEncryptJdk.applySHA256(source);
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}

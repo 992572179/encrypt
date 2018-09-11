@@ -10,9 +10,9 @@ import java.security.NoSuchAlgorithmException;
  * @date 2018年9月10日
  * @description 哈希工具类，将文本转化为哈希
  */
-public class HashEncrypt {
+public class HashEncryptJdk {
 	
-	private HashEncrypt() {
+	private HashEncryptJdk() {
 		//private constructor.
 	}
 
