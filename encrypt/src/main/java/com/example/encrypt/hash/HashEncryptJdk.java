@@ -8,7 +8,8 @@ import java.security.NoSuchAlgorithmException;
  * 
  * @author kawano
  * @date 2018年9月10日
- * @description 哈希工具类，将文本转化为哈希
+ * @description 哈希工具类，根据文本生成哈希摘要
+ * 
  */
 public class HashEncryptJdk {
 	
